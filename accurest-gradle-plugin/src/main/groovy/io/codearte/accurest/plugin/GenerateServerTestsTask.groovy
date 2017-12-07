@@ -15,15 +15,18 @@ class GenerateServerTestsTask extends ConventionTask {
 	@Nested
 	AccurestServerTestsTaskConfigProperties configProperties
 
+	GenerateServerTestsTask() {
+		project.afterEvaluate {
+			project.sourceSets.test.groovy {
+				project.logger.info("Registering ${getConfigProperties().generatedTestSourcesDir} as test source directory")
+				srcDir getConfigProperties().generatedTestSourcesDir
+			}
+		}
+	}
+
 	@TaskAction
 	void generate() {
 		project.logger.info("Accurest Plugin: Invoking test sources generation")
-
-		project.sourceSets.test.groovy {
-			project.logger.info("Registering ${getConfigProperties().generatedTestSourcesDir} as test source directory")
-			srcDir getConfigProperties().generatedTestSourcesDir
-		}
-
 		try {
 			//TODO: What with that? How to pass?
 			TestGenerator generator = new TestGenerator(getConfigProperties())
