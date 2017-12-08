@@ -95,7 +95,7 @@ project(':accurest-core') {
 		compile 'org.apache.commons:commons-lang3:3.3'
 		compile "com.github.tomakehurst:wiremock:$wiremockVersion"
 		compile "com.toomuchcoding.jsonassert:jsonassert:$jsonassertVersion"
-		compile 'org.codehaus.groovy:groovy-all:2.4.10'
+		compile 'org.codehaus.groovy:groovy-all:2.4.12'
 		testCompile 'cglib:cglib-nodep:2.2'
 		testCompile 'org.objenesis:objenesis:2.1'
 		testCompile project(':accurest-testing-utils')
@@ -211,6 +211,10 @@ buildscript {
 	dependencies {
 		classpath "gradle.plugin.com.palantir.ideatestfix:gradle-idea-test-fix:0.1.0"
 	}
+}
+
+wrapper {
+	gradleVersion '4.4'
 }
 
 apply plugin: "com.palantir.idea-test-fix"

@@ -1,0 +1,8 @@
+rootProject.name='bootSimpleCached'
+
+include 'module-impl', 'module-tests'
+buildCache {
+    local {
+        directory = "${settingsDir}/build-cache"
+    }
+}
