@@ -6,7 +6,6 @@ import spock.lang.Stepwise
 import static org.gradle.testkit.runner.TaskOutcome.FAILED
 import static org.gradle.testkit.runner.TaskOutcome.FROM_CACHE
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
-import static org.gradle.testkit.runner.TaskOutcome.UP_TO_DATE
 
 @Stepwise
 class BasicFunctionalCachedSpec extends AccurestIntegrationSpec {
@@ -20,23 +19,6 @@ class BasicFunctionalCachedSpec extends AccurestIntegrationSpec {
 		setupForProject("functionalTest/bootSimpleCached")
 		runTasksSuccessfully('clean') //delete accidental output when previously importing SimpleBoot into Idea to tweak it
 	}
-//
-//	def "should pass basic flow"() {
-//		when:
-//			BuildResult result = run("--build-cache", "check", "publishToMavenLocal")
-//		then:
-//			result.task(":generateWireMockClientStubs").outcome == SUCCESS
-//			result.task(":generateAccurest").outcome == SUCCESS
-//
-//		and: "tests generated"
-//			fileExists(GENERATED_TEST)
-//
-//		and: "client stubs generated"
-//			fileExists(GENERATED_CLIENT_JSON_STUB)
-//
-//		and: "generated tests executed"
-//			fileExists(TEST_EXECUTION_XML_REPORT)
-//	}
 
 	def "tasks should be up-to-date when appropriate"() {
 		given:
